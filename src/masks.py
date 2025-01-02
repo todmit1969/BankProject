@@ -7,6 +7,7 @@ def get_mask_account(bank_account: str) -> str:
     """Функция возвращающяя маску номера счета в формате '**XXXX'"""
     return f"**{bank_account[-4:]}"
 
+
 if __name__ == "__main__":
     user_input = input("Введите номер карты: ")
     if not user_input.isdigit() or len(user_input) > 16:
