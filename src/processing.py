@@ -1,8 +1,9 @@
 import typing
 
 
-def filter_by_state(transactions_list: list[typing.Dict[typing.Any,str]],
-                    state: str) -> list[typing.Dict[typing.Any,str]]:
+def filter_by_state(
+    transactions_list: list[typing.Dict[typing.Any, str]], state: str
+) -> list[typing.Dict[typing.Any, str]]:
     """Функция возвращает новый список словарей, содержащий только те словари,
     у которых ключ state соответствует указанному значению."""
 
@@ -19,8 +20,8 @@ def filter_by_state(transactions_list: list[typing.Dict[typing.Any,str]],
     else:
         return list_canceled
 
-def sort_by_date(transactions_list: list[typing.Dict[typing.Any,str]],
-                 sort_key: bool=True) -> list[typing.Dict[typing.Any,str]]:
+
+def sort_by_date(transactions_list: list[dict[typing.Any, str]], sort_key: bool = True) -> list[dict[typing.Any, str]]:
     """Функция принимает список словарей и необязательный параметр,
     задающий порядок сортировки и возвращает новый список,
      отсортированный по дате"""
@@ -35,5 +36,5 @@ vocab_list = [
     {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
 ]
 
-print(filter_by_state(vocab_list,"EXECUTED"))
+print(filter_by_state(vocab_list, "EXECUTED"))
 print(sort_by_date(vocab_list))
