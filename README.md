@@ -11,7 +11,7 @@
 git clone https://github.com/todmit1969/BankProject.git
 ```
 2. Перейдите в директорию проекта.
-```commandline
+```
 cd BankProject
 ```
 3. Установите зависимости:
@@ -19,7 +19,7 @@ cd BankProject
 pip install -r requirements.txt
 ```
 ## Использование:
-
+```
 python
 from src.processing import filter_by_state, sort_by_date
 
@@ -39,4 +39,4 @@ sorted_transactions = sort_by_date(transactions)
 
 ## Лицензия:
 
-Этот проект лицензирован по [лицензии MIT](LICENSE).
+Этот проект лицензирован по лицензии MIT.
