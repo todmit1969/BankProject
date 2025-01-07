@@ -21,7 +21,8 @@ def filter_by_state(
         return list_canceled
 
 
-def sort_by_date(transactions_list: list[dict[typing.Any, str]], sort_key: bool = True) -> list[dict[typing.Any, str]]:
+def sort_by_date(transactions_list: list[typing.Dict[typing.Any, str]],
+                 sort_key: bool = True) -> list[typing.Dict[typing.Any, str]]:
     """Функция принимает список словарей и необязательный параметр,
     задающий порядок сортировки и возвращает новый список,
      отсортированный по дате"""
