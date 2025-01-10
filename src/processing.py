@@ -1,9 +1,9 @@
-import typing
+from typing import Dict, Any
 
 
 def filter_by_state(
-    transactions_list: list[typing.Dict[str, typing.Any]], state: str
-) -> list[typing.Dict[str, typing.Any]]:
+    transactions_list: list[Dict[str, Any]], state: str
+) -> list[Dict[str, Any]]:
     """Функция возвращает новый список словарей, содержащий только те словари,
     у которых ключ state соответствует указанному значению."""
 
@@ -21,8 +21,8 @@ def filter_by_state(
         return list_canceled
 
 
-def sort_by_date(transactions_list: list[typing.Dict[str, typing.Any]],
-                 sort_key: bool = True) -> list[typing.Dict[str, typing.Any]]:
+def sort_by_date(transactions_list: list[Dict[str, Any]],
+                 sort_key: bool = True) -> list[Dict[str, Any]]:
     """Функция принимает список словарей и необязательный параметр,
     задающий порядок сортировки и возвращает новый список,
      отсортированный по дате"""
