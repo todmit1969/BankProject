@@ -15,8 +15,10 @@ def mask_account_card(bank_card_or_account: str) -> str:
 
     if len(card_account_number) > 16:
         new_mask_account_card = f"{card_account_name}{get_mask_account(card_account_number)}"
-    else:
+    elif len(card_account_number) == 16:
         new_mask_account_card = f"{card_account_name}{get_mask_card_number(card_account_number)}"
+    else:
+        return "Wrong value"
 
     return new_mask_account_card
 
