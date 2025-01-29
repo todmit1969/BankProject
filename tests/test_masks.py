@@ -3,10 +3,15 @@ from src.masks import get_mask_card_number, get_mask_account
 
 @pytest.fixture
 def card_number():
-    return("1234567890123456")
+    return("1234567qw012345")
 
 def test_correct_mask(card_number):
-    assert get_mask_card_number(card_number) == "1234 56** **** 3456"
+    if card_number != 16:
+        assert get_mask_card_number(card_number) == "Неправильно указан номер карты!"
+    elif not card_number.isdigit():
+        assert get_mask_card_number(card_number) == "Номер не может содержать буквы!"
+    else:
+        assert (card_number) == "1234 56** **** 3456"
 
 
 @pytest.fixture
