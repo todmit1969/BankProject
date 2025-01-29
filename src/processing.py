@@ -12,13 +12,17 @@ def filter_by_state(
     for transaction in transactions_list:
         if transaction["state"] == "EXECUTED":
             list_executed.append(transaction)
-        else:
+        elif transaction["state"] == "CANCELED":
             list_canceled.append(transaction)
+        else:
+            continue
 
     if state == "EXECUTED":
         return list_executed
-    else:
+    elif state == "CANCELED":
         return list_canceled
+    else:
+        return None
 
 
 def sort_by_date(transactions_list: list[Dict[str, Any]],
@@ -35,7 +39,8 @@ vocab_list = [
     {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
     {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
     {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
+    {"id": 615064591, "state": "", "date": "2018-10-14T08:21:33.419441"}
 ]
 
-print(filter_by_state(vocab_list, "EXECUTED"))
+print(filter_by_state(vocab_list, "CANCELED"))
 print(sort_by_date(vocab_list))
