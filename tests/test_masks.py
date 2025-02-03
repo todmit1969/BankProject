@@ -1,54 +1,20 @@
 import pytest
 from src.masks import get_mask_card_number, get_mask_account
 
-@pytest.fixture
-def card_number():
-    return("1234567qw012345")
-
-def test_correct_mask(card_number):
-    if card_number != 16:
-        assert get_mask_card_number(card_number) == "Неправильно указан номер карты!"
-    elif not card_number.isdigit():
-        assert get_mask_card_number(card_number) == "Номер не может содержать буквы!"
-    else:
-        assert (card_number) == "1234 56** **** 3456"
+@pytest.mark.parametrize('number, expected', [
+        ('1234567890123456', '1234 56** **** 3456'),
+        ("654", "Неправильно указан номер карты!"),
+        ("abcd4567efgh3456", "Номер не может содержать буквы!")
+])
+def test_correct_mask(number, expected):
+    assert get_mask_card_number(number) == expected
 
 
-@pytest.fixture
-def wrong_length():
-    return("12345678")
+@pytest.mark.parametrize('ac_number, expected', [
+        ('12345678901234567890', '**7890'),
+        ("654", "Номер счета должен содержать 20 цифр!"),
+        ("abcd4567efgh3456rtyj", "Номер счета должен содержать только цифры!")
+])
 
-def test_length(wrong_length):
-    assert get_mask_card_number(wrong_length) == "Неправильно указан номер карты!"
-
-
-@pytest.fixture
-def wrong_number():
-    return("132ewsf994784ewf")
-
-def test_wrong_number(wrong_number):
-    assert get_mask_card_number(wrong_number) == "Номер не может содержать буквы!"
-
-
-@pytest.fixture
-def acc_number():
-    return "12345678901234567890"
-
-def test_account_mask(acc_number):
-    assert get_mask_account(acc_number) == "**7890"
-
-
-@pytest.fixture
-def wrong_acc_length():
-    return "12345678"
-
-def test_length_acc_number(wrong_acc_length):
-    assert get_mask_account(wrong_acc_length) == "Номер счета должен содержать 20 цифр!"
-
-
-@pytest.fixture
-def not_digit_acc_number():
-    return "122454relksdlpwr000924"
-
-def test_digits_acc_number(not_digit_acc_number):
-    assert get_mask_account(not_digit_acc_number) == "Номер счета должен содержать только цифры!"
+def test_correct_acc_mask(ac_number, expected):
+    assert get_mask_account(ac_number) == expected
