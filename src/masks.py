@@ -1,16 +1,29 @@
 def get_mask_card_number(card_number: str) -> str:
     """Функция возвращающяя маску номера карты в формате 'XXXX XX** **** XXXX'"""
-    return f"{card_number[0:4]} {card_number[4:6]}** **** {card_number[-4:]}"
-
+    if len(card_number) != 16:
+        return "Неправильно указан номер карты!"
+    elif not card_number.isdigit():
+        return "Номер не может содержать буквы!"
+    elif len(card_number) == 16:
+        return f"{card_number[0:4]} {card_number[4:6]}** **** {card_number[-4:]}"
+    else:
+        return None
 
 def get_mask_account(bank_account: str) -> str:
     """Функция возвращающяя маску номера счета в формате '**XXXX'"""
-    return f"**{bank_account[-4:]}"
+    if len(bank_account) != 20 and  bank_account.isdigit():
+        return("Номер счета должен содержать 20 цифр!")
+    elif not bank_account.isdigit():
+        return ("Номер счета должен содержать только цифры!")
+    elif len(bank_account) == 20 and bank_account.isdigit():
+        return f"**{bank_account[-4:]}"
+    else:
+        return None
 
 
 if __name__ == "__main__":
     user_input = input("Введите номер карты: ")
-    if not user_input.isdigit() or len(user_input) > 16:
+    if not user_input.isdigit() or len(user_input) > 16 or len(user_input) < 16:
         print("Введен не коректный номер карты! Номер должен содержать только 16 цифр!")
     else:
         print(get_mask_card_number(user_input))
