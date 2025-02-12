@@ -1,4 +1,5 @@
 import pytest
+import src.generators
 from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
 
 transactions = (

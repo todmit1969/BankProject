@@ -82,9 +82,7 @@ def filter_by_currency(transactions, currency_code):
     for transaction in transactions:
         return (transaction for transaction in transactions
                 if transaction["operationAmount"]["currency"]["code"] == 'USD')
-#        if transaction["operationAmount"]["currency"]["code"] != currency_code:
-##        else:
-#            yield transaction
+
 
 usd_transactions = filter_by_currency(transactions, "USD")
 for _ in range(3):
