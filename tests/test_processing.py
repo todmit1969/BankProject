@@ -1,6 +1,9 @@
+from typing import Any, Dict
+
 import pytest
-from typing import Dict, Any
+
 from src.processing import filter_by_state, sort_by_date
+
 
 @pytest.fixture
 def filter_state():

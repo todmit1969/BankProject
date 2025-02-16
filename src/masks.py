@@ -9,9 +9,10 @@ def get_mask_card_number(card_number: str) -> str:
     else:
         return None
 
+
 def get_mask_account(bank_account: str) -> str:
     """Функция возвращающяя маску номера счета в формате '**XXXX'"""
-    if len(bank_account) != 20 and  bank_account.isdigit():
+    if len(bank_account) != 20 and bank_account.isdigit():
         return("Номер счета должен содержать 20 цифр!")
     elif not bank_account.isdigit():
         return ("Номер счета должен содержать только цифры!")
