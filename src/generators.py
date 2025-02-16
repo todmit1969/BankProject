@@ -79,14 +79,11 @@ transactions = [
 def filter_by_currency(transactions, currency_code):
     """ Функция возвращает список транзакций с указанным кодом валюты """
     return (transaction for transaction in transactions
-            if transaction["operationAmount"]["currency"]["code"] == 'USD')
+            if transaction["operationAmount"]["currency"]["code"] == currency_code)
 
 
-usd_transactions = filter_by_currency(transactions, "USD")
-for _ in range(3):
-    print(next(usd_transactions))
-    if StopIteration:
-        continue
+usd_transactions = filter_by_currency(transactions, "RUB")
+print(*list(usd_transactions), sep='\n')
 
 
 def transaction_descriptions(transactions):
@@ -105,12 +102,13 @@ def card_number_generator(start: int, stop: int):
     """ Функция возвращает сгенерированые номера карт в указаном диапазоне """
     if start >= stop:
         raise IndexError("Неправильный ввод данных")
-    for card_list in range(start, stop):
+    for card_list in range(start, stop+1):
         if 1 <= start <= 9999999999999999 or 1 <= stop <= 9999999999999999:
             card_number = "".join(f"{card_list:016}" for _ in range(16))
             formatted_card_number = " ".join([card_number[i: i + 4] for i in range(0, 16, 4)])
+
             yield formatted_card_number
 
 
-for card_number in card_number_generator(1, 3):
+for card_number in card_number_generator(1, 2):
     print(card_number)
