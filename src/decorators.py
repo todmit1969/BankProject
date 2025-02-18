@@ -2,6 +2,10 @@ from time import time
 
 # Декоратор log
 def log(filename=None):
+    """
+    Функция декоратор, которая записывает/показывает лог выполнения функции: время начала выполнения
+    функции, время окончания и результат. В случае ошибки выдает тип ошибки
+    """
     def decorator(func):
         def wrapper(*args, **kwargs):
             start_time = time()
@@ -30,6 +34,7 @@ def log(filename=None):
 
 @log(filename="")
 def my_function(x, y):
+    """ Функция суммирует два числа"""
     return x + y
 
 my_function(1, 2)
