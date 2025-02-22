@@ -1,4 +1,5 @@
-import json, os
+import json
+import os
 
 
 def open_json_file(file_path):
@@ -12,6 +13,3 @@ def open_json_file(file_path):
             return []
         else:
             return transaction_list
-
-#print(open_json_file("../data/operations.json"))
-
