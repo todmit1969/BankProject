@@ -30,7 +30,6 @@ def convert_rub(transaction):
         return float(amount)
     elif currency in ["USD", "EUR"]:
         rate = get_exchange_rate(currency)
-        print(rate)
         if rate:
             return float(amount) * rate
 
