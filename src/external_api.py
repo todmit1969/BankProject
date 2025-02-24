@@ -1,7 +1,7 @@
 import os
 import requests
 from dotenv import load_dotenv
-from utils import open_json_file
+from src.utils import open_json_file
 
 load_dotenv()
 apikey = os.getenv("API_KEY")
@@ -17,7 +17,8 @@ def get_exchange_rate(currency) -> float:
 
     if response.status_code == 200:
         return response.json()["rates"]["RUB"]
-    return None
+    else:
+        return None
 
 
 def convert_rub(transaction):
