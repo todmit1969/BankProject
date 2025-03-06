@@ -1,5 +1,6 @@
 from time import time
 
+
 # Декоратор log
 def log(filename=None):
     """

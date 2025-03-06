@@ -1,7 +1,6 @@
 import json
-import os
 import logging
-
+import os
 
 logger = logging.getLogger("utils.log")
 file_handler = logging.FileHandler("C:\\Users\\tmitev\\PycharmProjects\\BankProject\\logs\\utils.log", "w", encoding="utf-8")

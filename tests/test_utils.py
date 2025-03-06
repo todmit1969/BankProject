@@ -1,5 +1,7 @@
-from unittest.mock import patch, mock_open
+from unittest.mock import mock_open, patch
+
 from src.utils import open_json_file
+
 
 @patch("builtins.open", new_callable=mock_open, read_data=None)
 def test_open_json_file(mock_file, file_name=None):
