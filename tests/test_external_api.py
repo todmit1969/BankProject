@@ -1,5 +1,7 @@
-from unittest.mock import patch, Mock
+from unittest.mock import Mock, patch
+
 from src.external_api import convert_rub
+
 
 @patch("requests.get")
 def test_convert_rub(mock_get, convert_to_rub=7000):

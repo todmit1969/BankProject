@@ -1,6 +1,5 @@
 import logging
 
-
 logger = logging.getLogger("masks.log")
 file_handler = logging.FileHandler("C:\\Users\\tmitev\\PycharmProjects\\BankProject\\logs\\masks.log", "w", encoding="utf-8")
 file_formatter = logging.Formatter("%(asctime)s:%(name)s:%(levelname)s:%(message)s")

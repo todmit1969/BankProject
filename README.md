@@ -26,6 +26,7 @@ from src.masks import get_mask_card_number, get_mask_account
 from src.widget import mask_account_card
 from src.generators import filter_by_currency, transaction_descriptions,
                             card_number_generator
+from src.read_transactions import read_csv_transactions, read_excel_transactions                        
 
 # Пример использования filter_by_state
 transactions = [
@@ -83,6 +84,14 @@ for _ in range(2):
 # Пример использования card_number_generator
 for card_number in card_number_generator(1, 4):
     print(card_number)
+    
+# Пример использования read_csv_transactions    
+result_csv = read_csv_transactions(file_path_csv)
+print(result_csv)
+
+# Пример использования read_excel_transactions    
+result_excel = read_excel_transactions(file_path_excel)
+print(result_excel)
 ```
 
 ## Тестирование
@@ -147,6 +156,13 @@ sort_by_date.
 - Проверка корректности форматирования номеров карт.
 - Проверка, что генератор корректно обрабатывает крайние значения
 диапазона и правильно завершает генерацию.
+
+В модуле read_transactions тестируются функции read_csv_transactions 
+и read_excel_transactions
+Для обеих функций:
+- Проверка, что функции возвращают список словарей.
+- Проверка обработки ошибки при не найденом файле.
+- Проверка обработки ошибки при пустом файле.
 
 ## Документация:
 

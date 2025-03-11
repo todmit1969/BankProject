@@ -1,6 +1,8 @@
 import os
+
 import requests
 from dotenv import load_dotenv
+
 from src.utils import open_json_file
 
 load_dotenv()
