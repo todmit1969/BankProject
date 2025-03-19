@@ -35,7 +35,7 @@ def main() -> None:
         print("Для обработки выбран XLSX-файл.")
         file_path = os.path.join(DATA_PATH, "transactions_excel.xlsx")
         file_choosen = read_excel_transactions(file_path)
-        print(file_choosen)
+
         currency_key = 3
 
     print("""Введите статус, по которому необходимо выполнить фильтрацию. 
@@ -49,9 +49,10 @@ def main() -> None:
             print(f"Статус операции {answer_2} недоступен.")
         else:
             print(f"Статус операции {answer_2} недоступен.")
+    if not filtered_trans:
+        print("Нет операций с данным статусом!")
 
     print("Отсортировать операции по дате? Да/Нет")
-
     while True:
         answer_3 = input("Введите Ваш выбор: ").lower()
         if answer_3 == "да" or answer_3 == "нет":
