@@ -76,14 +76,21 @@ transactions = [
         }]
 
 
-def filter_by_currency(transactions, currency_code):
+def filter_by_currency(transactions, currency_code, currency_key):
     """ Функция возвращает список транзакций с указанным кодом валюты """
-    return (transaction for transaction in transactions
-            if transaction["operationAmount"]["currency"]["code"] == currency_code)
+   # print(transactions)
+   # print(currency_code)
+   # print(currency_key)
+    if currency_key == 1:
+        return list((transaction for transaction in transactions
+            if transaction["operationAmount"]["currency"]["code"] == currency_code))
+    else:
+        return list((transaction for transaction in transactions
+                     if transaction["currency_code"] == currency_code))
 
 
-usd_transactions = filter_by_currency(transactions, "RUB")
-print(*list(usd_transactions), sep='\n')
+#usd_transactions = filter_by_currency("../data/operations.json", "RUB")
+#print(*list(usd_transactions), sep='\n')
 
 
 def transaction_descriptions(transactions):
@@ -93,9 +100,9 @@ def transaction_descriptions(transactions):
         yield description
 
 
-tran_desc = transaction_descriptions(transactions)
-for _ in range(5):
-    print(next(tran_desc))
+#tran_desc = transaction_descriptions(transactions)
+#for _ in range(5):
+#    print(next(tran_desc))
 
 
 def card_number_generator(start: int, stop: int):
@@ -110,5 +117,5 @@ def card_number_generator(start: int, stop: int):
             yield formatted_card_number
 
 
-for card_number in card_number_generator(1, 2):
-    print(card_number)
+#for card_number in card_number_generator(1, 2):
+#    print(card_number)

@@ -8,7 +8,7 @@ def read_csv_transactions(file_path: str) -> List[Dict[str, Any]]:
     try:
         transactions_df = pd.read_csv(file_path, delimiter=";")
         transactions = transactions_df.to_dict(orient="records")
-        return transactions
+        return list(transactions)
     #    return json.dumps(transactions, indent=4).encode("utf-8").decode("unicode_escape")
     except FileNotFoundError:
         print("Файл не найден")
