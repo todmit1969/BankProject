@@ -1,46 +1,19 @@
 from typing import Any, Dict
-
 from mypy.strconv import indent
 
 
-def filter_by_state(
-    transactions_list: list[Dict[str, Any]], state: str
-) -> list[Dict[str, Any]]:
+def filter_by_state(transactions_list: list[Dict[str, Any]], state: str) -> list[Dict[str, Any]]:
     """Функция возвращает новый список словарей, содержащий только те словари,
     у которых ключ state соответствует указанному значению."""
 
-    list_executed = []
-    list_canceled = []
-    list_pending = []
-
     for item in transactions_list:
         # Фильтрация с проверкой наличия ключа
-        filtered_list = [item for item in transactions_list if 'state' in item and item['state'] == state]
+        filtered_list =list([item for item in transactions_list if 'state' in item and item['state'] == state])
 
     if not filtered_list:
         raise ValueError("Указанное значение статуса state отсутствует в списке словарей")
 
     return filtered_list
-
-#    for transaction in transactions_list:
-   #     print(transaction)
-#        if transaction["state"] == "EXECUTED":
-#            list_executed.append(transaction)
-#        elif transaction["state"] == "CANCELED":
-#            list_pending.append(transaction)
-#        elif transaction["state"] == "PENDING":
-#            list_canceled.append(transaction)
-#        else:
-#            continue
-
-#    if state == "EXECUTED":
-#        return list_executed
-#    elif state == "CANCELED":
-#        return list_canceled
-#    elif state == "PENDING":
-#        return list_pending
-#    else:
-#        return None
 
 
 def sort_by_date(transactions_list: list[Dict[str, Any]],
